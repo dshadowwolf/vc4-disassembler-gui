@@ -68,3 +68,17 @@ html, body {
     min-width: 15em;
     width: 15em;
 }
+
+#log-window {
+    overflow-y: scroll;
+}
+
+#log {
+    font-family: Andale Mono, AndaleMono, monospace;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    background-color: black;
+    color: #33FF33;
+}
