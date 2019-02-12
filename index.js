@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, shell } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -6,7 +6,12 @@ let win
 
 function createWindow () {
     // Create the browser window.
-    win = new BrowserWindow()
+    win = new BrowserWindow({
+	webPreferences: {
+	    nodeIntegration: true
+	},
+	allowEval: false
+    });
 
     // and load the index.html of the app.
     win.loadFile('ui/main.html')
@@ -43,6 +48,26 @@ app.on('activate', () => {
     if (win === null) {
 	createWindow()
     }
+})
+
+app.on('web-contents-created', (event, contents) => {
+    contents.on('will-navigate', (event, navigationUrl) => {
+	const parsedUrl = new URL(navigationUrl)
+
+	if (parsedUrl.origin !== 'https://my-own-server.com') {
+	    event.preventDefault()
+	}
+    })
+})
+
+app.on('web-contents-created', (event, contents) => {
+    contents.on('new-window', (event, navigationUrl) => {
+	// In this example, we'll ask the operating system
+	// to open this event's url in the default browser.
+	event.preventDefault()
+
+	shell.openExternalSync(navigationUrl)
+    })
 })
 
 // In this file you can include the rest of your app's specific main process

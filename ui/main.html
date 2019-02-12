@@ -2,18 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
     <title>VideoCoreIV Tracing Disassembler</title>
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <!-- Insert this line above script imports  -->
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="js/set_module.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/popper/popper.min.js"></script>
     <script src="js/popper/tooltip.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <!-- Insert this line after script imports -->
-    <script>if (window.module) module = window.module;</script>
+    <script src="js/reset_module.js"></script>
     <script src="js/runner.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
