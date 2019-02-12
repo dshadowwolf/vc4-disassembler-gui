@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>VideoCoreIV Tracing Disassembler</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/popper/popper.min.js"></script>
+    <script src="js/popper/tooltip.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- Insert this line after script imports -->
+    <script>if (window.module) module = window.module;</script>
+    <script src="js/runner.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body>
+    <section id="emul-view">
+      <div id="register-view">
+	<table id="registers">
+	  <tr name="r0">
+	    <td class="register-name">r0</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r1">
+	    <td class="register-name">r1</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r2">
+	    <td class="register-name">r2</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r3">
+	    <td class="register-name">r3</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r4">
+	    <td class="register-name">r4</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r5">
+	    <td class="register-name">r5</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r6">
+	    <td class="register-name">r6</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r7">
+	    <td class="register-name">r7</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r8">
+	    <td class="register-name">r8</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r9">
+	    <td class="register-name">r9</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r10">
+	    <td class="register-name">r10</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r11">
+	    <td class="register-name">r11</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r12">
+	    <td class="register-name">r12</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r13">
+	    <td class="register-name">r13</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r14">
+	    <td class="register-name">r14</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r15">
+	    <td class="register-name">r15</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r16">
+	    <td class="register-name">r16</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r17">
+	    <td class="register-name">r17</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r18">
+	    <td class="register-name">r18</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r19">
+	    <td class="register-name">r19</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r20">
+	    <td class="register-name">r20</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r21">
+	    <td class="register-name">r21</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r22">
+	    <td class="register-name">r22</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r23">
+	    <td class="register-name">r23</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="gp">
+	    <td class="register-name">gp</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="sp">
+	    <td class="register-name">sp</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="lr">
+	    <td class="register-name">lr</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="r27">
+	    <td class="register-name">r27</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="esp">
+	    <td class="register-name">esp</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="tp">
+	    <td class="register-name">tp</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="sr">
+	    <td class="register-name">sr</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	  <tr name="pc">
+	    <td class="register-name">pc</td>
+	    <td class="register-value">0x00000000</td>
+	  </tr>
+	</table>
+      </div>
+      <div id="memory-view"></div>
+      <div id="stack-view"></div>
+    </section>
+    <section id="log-window">
+      <div id="log"></div>
+    </section>
+  </body>
+</html>

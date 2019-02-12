@@ -1,0 +1,70 @@
+html, body {
+    font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.titlebar {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+#emul-view {
+    font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
+    min-width: 1024px;
+    min-height: 768px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+    vertical-align: top;
+}
+
+#register-view {
+    display: inline-block;
+    min-width: 13em;
+    width: 13em;
+    margin: 0;
+    padding: 0;
+}
+
+.registers {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+
+#register-view tr {
+    border: 1px solid black;
+}
+
+.register-name {
+    width: 3em;
+    text-align: right;
+}
+
+.register-value {
+    width: 10em;
+    text-align: center;
+}
+
+#memory-view {
+    display: inline-block;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 67em;
+    win-width: 67em;
+    height: 100%;
+}
+
+#stack-view {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-width: 15em;
+    width: 15em;
+}
