@@ -79,8 +79,8 @@ html, body {
 
 #register-view {
     display: inline-block;
-    min-width: 7em;
-    width: 7em;
+    min-width: 6em;
+    width: 6em;
     margin: 0;
     margin-right: 0.25em;
     padding: 0;
@@ -123,8 +123,8 @@ html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    width: 48em;
-    win-width: 48em;
+    width: 47em;
+    win-width: 47em;
     height: 41em;
     min-height: 41em;
 }
@@ -136,17 +136,18 @@ html, body {
     overflow-y: scroll;
     overflow-x: hidden;
     min-width: 10em;
-    width: 10.05em;
+    width: 10em;
     height: 41em;
     min-height: 41em;
+    margin-left: 0.3em;
 }
 
 #instruction-view {
     display: inline-block;
     margin: 0;
     padding: 0;
-    width: 21.6em;
-    min-width: 21.6em;
+    width: 22.6em;
+    min-width: 22.6em;
     overflow-y: scroll;
     overflow-x: hidden;
     height: 41em;
