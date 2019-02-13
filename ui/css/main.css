@@ -79,19 +79,24 @@ html, body {
 
 #register-view {
     display: inline-block;
-    min-width: 8em;
-    width: 8em;
+    min-width: 7em;
+    width: 7em;
     margin: 0;
     margin-right: 0.25em;
     padding: 0;
     height: 41em;
     min-height: 41em;
+    margin: 0px auto;
 }
 
 .registers {
     border-collapse: collapse;
     margin: 0;
     padding: 0;
+}
+
+#register-view table {
+    width: 6em;
 }
 
 #register-view tr {
@@ -102,10 +107,11 @@ html, body {
     width: 2em;
     text-align: right;
     color: #FFB000;
+    margin-right: 0.1em;
 }
 
 .register-value {
-    width: 6em;
+    width: 4em;
     text-align: center;
     color: white;
     background-color: #000080;
@@ -117,8 +123,8 @@ html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    width: 46em;
-    win-width: 46em;
+    width: 48em;
+    win-width: 48em;
     height: 41em;
     min-height: 41em;
 }
@@ -165,6 +171,10 @@ html, body {
 span.mem-line {
     background-color: #000080;
     color: white;
+    display: inline-block;
+    min-width: 27.75em;
+    width: 27.75em;
+    margin-right: 0.25em;
 }
 
 span.chars {

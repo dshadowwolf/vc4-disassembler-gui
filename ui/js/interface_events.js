@@ -9,27 +9,18 @@ electron.ipcRenderer.on('openFile', (event, message) => {
     let data = loadFileRaw(message);
     log.info("Loaded "+message+" => "+data.length+" bytes of data -- type: "+data); 
 
-    let getDisplayChar = function(c) {
-	return (c>=32 && c<=126) ? String.fromCharCode(c) : '.';
-    };
-	
-    let getDisplayString = function(i) {
-	let rv = "";
-	i.forEach((elem) => rv += getDisplayChar(elem));
-	return rv;
-    };
-
     let first = true;
     for(let j = 0; j < data.length; j += 32) {
 	let addr = "0x"+(0x80000000 + j).toString(16).toUpperCase();
 	let hexData = "";
-	let its = [];
+	let its = "";
 	for(let k = 0; k < 32 && (j+k) < data.length; k++) {
 	    if( (k%4) == 0 ) hexData += " ";
 	    hexData += data.readUInt8(j+k).toString(16).padStart(2,'0');
-	    its.push(data.readUInt8(j+k));
+	    let hd = data.readUInt8(j+k);
+	    its += (hd>32 && hd <127)?String.fromCharCode(hd):(hd==32)?"&nbsp;":".";
 	}
-	let line = addr + ": <span class=\"mem-line\">" + hexData + "</span>  <span class=\"chars\">" + getDisplayString(its) + "</span>";
+	let line = addr + ": <span class=\"mem-line\">" + hexData + "</span><span class=\"chars\">" + its + "</span>";
 	log.debug("line:: \""+line+"\"");
 	if(first) {
 	    $("#memory-view").html(line+"<br>");
