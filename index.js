@@ -1,8 +1,38 @@
-const { app, BrowserWindow, shell } = require('electron')
+const { app, BrowserWindow, shell, Menu, dialog } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
+
+const menu_template = [
+    {
+	label: 'File',
+	submenu: [
+	    { label: "Load",
+	      accelerator: 'CmdOrCtrl+L',
+	      click(item, focusedWindow) {
+		  let files = dialog.showOpenDialog({
+		      properties: ['openFile'],
+		      filters: [ {
+			  name: 'All Files',
+			  extensions: ['*']
+		      }, {
+			  name: 'Firmware Files',
+			  extensions: ['elf', 'bin' ]
+		      }
+			       ]
+		  });
+		  if(files) {
+		      focusedWindow.send('openFile', files[0]);
+		  } else {
+		      focusedWindow.send('logInfo', "no file selected");
+		  }
+	      }
+	    },
+	    { role: 'close' }
+	]
+    }
+];
 
 function createWindow () {
     // Create the browser window.
@@ -17,6 +47,10 @@ function createWindow () {
 	allowEval: false
     });
 
+
+    const menu = Menu.buildFromTemplate(menu_template);
+    Menu.setApplicationMenu(menu);
+    
     // and load the index.html of the app.
     win.loadFile('ui/main.html')
 
