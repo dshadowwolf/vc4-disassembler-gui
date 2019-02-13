@@ -7,7 +7,6 @@ electron.ipcRenderer.on('logInfo', (event, message) => {
 electron.ipcRenderer.on('openFile', (event, message) => {
     log.debug("opening file: \'"+message+"\'");
     let data = loadFileRaw(message);
-    log.info("Loaded "+message+" => "+data.length+" bytes of data -- type: "+data); 
 
     let first = true;
     for(let j = 0; j < data.length; j += 32) {
@@ -21,7 +20,6 @@ electron.ipcRenderer.on('openFile', (event, message) => {
 	    its += (hd>32 && hd <127)?String.fromCharCode(hd):(hd==32)?"&nbsp;":".";
 	}
 	let line = addr + ": <span class=\"mem-line\">" + hexData + "</span><span class=\"chars\">" + its + "</span>";
-	log.debug("line:: \""+line+"\"");
 	if(first) {
 	    $("#memory-view").html(line+"<br>");
 	    first = false;
@@ -29,12 +27,19 @@ electron.ipcRenderer.on('openFile', (event, message) => {
 	    $("#memory-view").append(line+"<br>");
 	}
     }
-	
-/*    let disassembled = dis(data);
+
+    log.info("disassembling instruction stream now...");
+    let disassembled = dis(data);
     log.info("Disassembly has "+disassembled.length+" items");
+    first = true;
     disassembled.forEach((element) => {
-	$("#instruction-view").append(element);
-	$("#instruction-view").append("<br>");
+	if(first) {
+	    $("#instruction-view").html(element+"<br>");
+	    first = false;
+	} else {
+	    $("#instruction-view").append(element+"<br>");
+	}
     });
-*/
+
+    log.info("File Loaded!");
 });

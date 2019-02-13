@@ -44,7 +44,7 @@ function createWindow () {
 	    nodeIntegration: true,
 	    devTools: false
 	},
-	allowEval: false
+	allowEval: true
     });
 
 

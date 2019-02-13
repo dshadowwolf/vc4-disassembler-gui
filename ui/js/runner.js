@@ -21,6 +21,6 @@ $(document).ready(function() {
 	n.push("0x" + j.toString(16).padStart(8,'0') + ": 0x00000000");
 
     $("#stack-view").html(n.join("<br>"));
-    processArch(loadFile("ui/videocoreiv.arch"));
+    loadArchitecture(loadFile("ui/videocoreiv.arch"));
 });
 
