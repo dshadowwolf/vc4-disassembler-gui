@@ -151,6 +151,7 @@ html, body {
     min-height: 16em;
     max-height: 16.5em;
     height: 16.5em;
+    padding-right: 1px;
 }
 
 #log {
@@ -166,4 +167,26 @@ span.mem-line {
 
 span.chars {
     color: white;
+}
+
+span.debug {
+    color: #FFB000;
+}
+
+span.warning {
+    font-weight: 600;
+    color: #f08030;
+}
+
+span.error {
+    font-weight: 600;
+    color: firebrick;
+    background-color: navy;
+}
+
+span.fatal {
+    font-weight: 900;
+    font-size: 17px;
+    color: black;
+    background-color: crimson;
 }

@@ -19,11 +19,18 @@ class Logger {
     }
 
     fatal(text) {
-	this.logInner("FATAL", text);
+	this.logInner("FATAL", text.toUpperCase());
     }
 
     logInner(prefix, text) {
-	$(this._sel).append("<br>"+prefix+": "+text);
+	let ntext = "<br><span class=\"";
+	ntext += prefix.toLowerCase();
+	ntext += "\">";
+	ntext += prefix;
+	ntext += " : ";
+	ntext += text;
+	ntext += "</span>";
+	$(this._sel).append(ntext);
     }
 
     setSelector(selector) {
@@ -46,13 +53,6 @@ $(document).ready(function() {
     }
     let fin = k.join("<br>");
     $("#memory-view").html(fin);
-    // $("#memory-view").css("height", $("#register-view").height());
-    // $("#stack-view").css("height", $("#register-view").height());
-    // $("#instruction-view").css("height", $("#register-view").height());
-    // $("#memory-view").css("width", ($("#emul-view").width() - $("#register-view").width() - $("#stack-view").width() - $("#instruction-view").width()  - 36).toString()+"px");
-    // $("#emul-view").css("width", ($(window).width - 10).toString()+"px");
-    // $("#log-wndow").css("width", $("body").outerWidth());
-    // $("#log-window").css("height", ($(window).height() - $("#register-view").height() - 6).toString()+"px");
     let p = [];
     for(let x = 0; x < 4096; x += 2)
 	p.push("0x"+x.toString(16).padStart(8,'0')+": bkpt");
@@ -63,8 +63,10 @@ $(document).ready(function() {
 	n.push("0x" + j.toString(16).padStart(8,'0') + ": 0x00000000");
 
     $("#stack-view").html(n.join("<br>"));
+    log.info("the quick brown fox jumps over the lazy dog");
+    log.debug("the quick brown fox jumps over the lazy dog");
+    log.warn("the quick brown fox jumps over the lazy dog");
+    log.error("the quick brown fox jumps over the lazy dog");
+    log.fatal("the quick brown fox jumps over the lazy dog");
 });
 
-$(window).resize(function() {
-    log.debug("current window: "+$(window).width()+"x"+$(window).height());
-});
