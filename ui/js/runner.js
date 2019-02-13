@@ -46,12 +46,13 @@ $(document).ready(function() {
     }
     let fin = k.join("<br>");
     $("#memory-view").html(fin);
-    $("#memory-view").css("height", $("#register-view").height());
-    $("#stack-view").css("height", $("#register-view").height());
-    $("#instruction-view").css("height", $("#register-view").height());
-    $("#memory-view").css("width", ($("body").outerWidth() - $("#register-view").width() - $("#stack-view").width() - $("#instruction-view").width() - 26).toString()+"px");
-    $("#log-wndow").css("width", $("body").outerWidth());
-    $("#log-window").css("height", ($(window).height() - $("#register-view").height() - 6).toString()+"px");
+    // $("#memory-view").css("height", $("#register-view").height());
+    // $("#stack-view").css("height", $("#register-view").height());
+    // $("#instruction-view").css("height", $("#register-view").height());
+    // $("#memory-view").css("width", ($("#emul-view").width() - $("#register-view").width() - $("#stack-view").width() - $("#instruction-view").width()  - 36).toString()+"px");
+    // $("#emul-view").css("width", ($(window).width - 10).toString()+"px");
+    // $("#log-wndow").css("width", $("body").outerWidth());
+    // $("#log-window").css("height", ($(window).height() - $("#register-view").height() - 6).toString()+"px");
     let p = [];
     for(let x = 0; x < 4096; x += 2)
 	p.push("0x"+x.toString(16).padStart(8,'0')+": bkpt");
@@ -65,12 +66,5 @@ $(document).ready(function() {
 });
 
 $(window).resize(function() {
-    $("#memory-view").css("height", $("#register-view").height());
-    $("#stack-view").css("height", $("#register-view").height());
-    $("#memory-view").css("width", ($("body").outerWidth() - $("#register-view").width() - $("#stack-view").width() - $("#instruction-view").width()  - 26).toString()+"px");
-    $("#instruction-view").css("height", $("#register-view").height());
-    $("#log-wndow").css("width", $("#emul-view").width());
-    $("#log-window").css("height", ($(window).height() - $("#register-view").height() - 6).toString()+"px");
-    log.debug("current mem-view: "+$("#memory-view").width()+"x"+$("#memory-view").height());
-    log.debug("log window is: "+$("#log-window").width()+"x"+$("#log-window").height());
+    log.debug("current window: "+$(window).width()+"x"+$(window).height());
 });
