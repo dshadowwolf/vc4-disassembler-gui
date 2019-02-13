@@ -1,8 +1,16 @@
 html, body {
-    font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
     margin: 0;
     padding: 0;
     border: 0;
+    overflow: hidden;
+    background-color: #141414;
+    color: #33FF33;
+    font-family: Andale Mono, AndaleMono, monospace;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
 }
 
 .titlebar {
@@ -11,7 +19,6 @@ html, body {
 }
 
 #emul-view {
-    font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
     min-width: 1024px;
     min-height: 768px;
     margin: 0;
@@ -41,11 +48,14 @@ html, body {
 .register-name {
     width: 3em;
     text-align: right;
+    color: #FFB000;
 }
 
 .register-value {
     width: 10em;
     text-align: center;
+    color: white;
+    background-color: #000080;
 }
 
 #memory-view {
@@ -54,8 +64,8 @@ html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    width: 67em;
-    win-width: 67em;
+    width: 36em;
+    win-width: 36em;
     height: 100%;
 }
 
@@ -65,8 +75,18 @@ html, body {
     padding: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    min-width: 15em;
-    width: 15em;
+    min-width: 16em;
+    width: 16em;
+}
+
+#instruction-view {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 30em;
+    min-width: 30em;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #log-window {
@@ -74,11 +94,15 @@ html, body {
 }
 
 #log {
-    font-family: Andale Mono, AndaleMono, monospace;
     font-size: 13px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 400;
-    background-color: black;
-    color: #33FF33;
+    line-height: 19px;
+}
+
+span.mem-line {
+    background-color: #000080;
+    color: white;
+}
+
+span.chars {
+    color: white;
 }
