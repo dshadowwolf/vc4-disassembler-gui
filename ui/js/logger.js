@@ -31,6 +31,10 @@ class Logger {
 	ntext += text;
 	ntext += "</span>";
 	$(this._sel).append(ntext);
+	$(this._sel).get(0).scrollIntoView({
+	    behavior: "smooth",
+	    block: "end",
+	    inline: "start"});
     }
 
     setSelector(selector) {
