@@ -37,7 +37,7 @@ namespace VC4Tools {
     }
 
     enum INSNSize {
-        SCALAR16 = 0, SCALAR32 = 1 << 16, SCALAR48 = 7 << 14, VECTOR48 = 15 << 13, VECTOR80 = 31 << 12
+        SCALAR16 = 0, SCALAR32 = 1 << 15, SCALAR48 = 7 << 13, VECTOR48 = 15 << 12, VECTOR80 = 31 << 11
     };
 
     enum OpCode_LogicArith {
@@ -57,41 +57,56 @@ namespace VC4Tools {
     };
 
     enum OpCode_Scalar16_Param {
-        SWI_R = 1 << 6, B_R = 2 << 6, BL_R = 3 << 6, SWITCH_B = 8 << 5, SWITCH = 10 << 5, VERSION = 14 << 5, SWI_U = 14 << 6
+        SWI_R = 1 << 5, B_R = 2 << 5, BL_R = 3 << 5, SWITCH_B = 8 << 4, SWITCH = 10 << 4, VERSION = 14 << 4, SWI_U = 14 << 5
     };
 
     enum OpCode_Scalar16_MemOps {
-        LDM_RB_RM_SP = 4 << 8, STM_RB_RM_SP = 5 << 8, LDM_RB_RM_PC_SP = 6 << 8, STM_RB_RM_PC_SP = 7 << 8,
-        LD_RD_SP = 1 << 11, ST_RD_SP = 3 << 10, LD_W_RD_RS = -1, ST_W_RD_RS = -2, ADD_RD_SP_O = 2 << 12,
-        BCC_O = 3 << 12, LD_RD_RS_U = 2 << 13, ST_RD_RS_U = 3 << 13
+        LDM_RB_RM_SP = 4 << 7, STM_RB_RM_SP = 5 << 7, LDM_RB_RM_PC_SP = 6 << 7, STM_RB_RM_PC_SP = 7 << 7,
+        LD_RD_SP = 1 << 10, ST_RD_SP = 3 << 9, LD_W_RD_RS = -1, ST_W_RD_RS = -2, ADD_RD_SP_O = 2 << 11,
+        BCC_O = 3 << 11, LD_RD_RS_U = 2 << 12, ST_RD_RS_U = 3 << 12
     };
 
 
-    class Instruction {
+    interface IInstruction {
+        int getSize();
+        void setParameters(List<byte> parameterBytes);
+        bool needsParameters();
+        bool hasParameters();
+    }
+
+    class Instruction : IInstruction {
         private INSNSize size;
 
         // SCALAR16 instruction
         Instruction(byte[2] sourceBytes) {
-
+            size = 2; // SCALAR16
         }
 
         // SCALAR32 instruction
         Instruction(byte[4] sourceBytes) {
-
+            size = 4; // SCALAR32
         }
 
         // SCALAR48 or VECTOR48 instruction
         Instruction(byte[6] sourceBytes) {
-
+            size = 6; // 48 bits
         }
 
         // VECTO80 instruction
         Instruction(byte[10] sourceBytes) {
+            size = 10; // 80 bits
+        }
 
+        int getSize() {
+            return INSNSize;
         }
 
         // does the instruction need parameters not included in the instruction data itself ?
         bool needsParameters() {
+            return false;
+        }
+
+        bool hasParameters() {
             return false;
         }
 
