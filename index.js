@@ -11,7 +11,7 @@ const menu_template = [
 	    { label: "Load",
 	      accelerator: 'CmdOrCtrl+L',
 	      click(item, focusedWindow) {
-		  let files = dialog.showOpenDialog({
+		  let files = dialog.showOpenDialogSync({
 		      properties: ['openFile'],
 		      filters: [ {
 			  name: 'All Files',
@@ -23,6 +23,7 @@ const menu_template = [
 			       ]
 		  });
 		  if(files) {
+	              console.log(require("util").inspect(files));
 		      focusedWindow.send('openFile', files[0]);
 		  } else {
 		      focusedWindow.send('logInfo', "no file selected");
